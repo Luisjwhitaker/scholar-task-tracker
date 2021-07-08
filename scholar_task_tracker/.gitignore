@@ -1,0 +1,16 @@
+*.log
+*.pot
+*.py[cod]
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+settings.py
+/static
+static/
+*.jpg
+*.png
+*.css
+*.js
