@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+
+    <table style="width:100%;">
+      <tr>
+        <th style="padding:10px;">Scholar</th>
+        <th>Adventure SLP</th>
+        <th>Arena SLP</th>
+        <th>Quest SLP</th>
+        <th>Date Submitted</th>
+        <th>Total</th>
+      </tr>
+
+      {% for task in taskentry %}
+        <tr>
+          <th style="text-align: left;padding-left: 10px;">{{task.user}}</th>
+          <th>{{task.adventure_slp}}</th>
+          <th>{{task.arena_slp}}</th>
+          <th>{{task.quest_slp}}</th>
+          <th>{{task.date_submitted|date:"M j Y - H:i"}}</th>
+          <th>22</th>
+        </tr>
+      {% endfor %}
+    </table>
+
+  </body>
+</html>
