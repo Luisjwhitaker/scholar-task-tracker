@@ -25,6 +25,7 @@
       </tr>
 
       {% for task in taskentry %}
+      {% if task.user.username == user.username %}
         <tr>
           <th style="text-align: left;padding-left: 10px;">{{task.user}}</th>
           <th>{{task.adventure_slp}}</th>
@@ -33,6 +34,7 @@
           <th>{{task.date_submitted|date:"M j Y - H:i"}}</th>
           <th>22</th>
         </tr>
+      {% endif %}
       {% endfor %}
     </table>
 

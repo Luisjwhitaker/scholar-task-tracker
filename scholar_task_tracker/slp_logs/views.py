@@ -5,4 +5,4 @@ from .models import *
 
 def logs_view(request):
     taskentry = TaskEntry.objects.all()
-    return render(request,'slp_logs/index.html',{'taskentry':taskentry})
+    return render(request,'slp_logs/previous_logs.html',{'taskentry':taskentry})
