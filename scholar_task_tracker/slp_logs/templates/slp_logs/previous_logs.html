@@ -17,6 +17,7 @@
     <table style="width:100%;">
       <tr>
         <th style="padding:10px;">Scholar</th>
+        <th>Scholar Nickname</th>
         <th>Adventure SLP</th>
         <th>Arena SLP</th>
         <th>Quest SLP</th>
@@ -28,6 +29,7 @@
       {% if task.user.username == user.username %}
         <tr>
           <th style="text-align: left;padding-left: 10px;">{{task.user}}</th>
+          <th>{{task.user.profile.user_nickname}}</th>
           <th>{{task.adventure_slp}}</th>
           <th>{{task.arena_slp}}</th>
           <th>{{task.quest_slp}}</th>
