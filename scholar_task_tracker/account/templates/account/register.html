@@ -1,17 +1,22 @@
+{% extends "account/base.html" %}
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>this is the REGISTER page</h1>
-    <form class="" method="POST">
-      {%csrf_token%}
-      {{form|crispy}}
-      <button type="submit" name="button">Sign Up</button>
-    <a href="{% url 'login' %}">Sign In</a>
-    </form>
-  </body>
-</html>
+{% block content %}
+  <h1>this is the REGISTER page</h1>
+  <div class="content-section">
+      <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Join Today</legend>
+              {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn btn-outline-info" type="submit">Sign Up</button>
+          </div>
+      </form>
+      <div class="border-top pt-3">
+          <small class="text-muted">
+              Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+          </small>
+      </div>
+  </div>
+{% endblock content %}

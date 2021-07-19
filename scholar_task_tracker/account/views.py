@@ -18,10 +18,7 @@ def register(request):
             messages.error(request, f'error')
     else:
         form = UserRegisterForm()
-    return render(request,'account/register.html',{'form':form})
-
-def login(request):
-    return render(request,'account/login.html')
+    return render(request,'account/register.html', {'form':form})
 
 @login_required
 def profile(request):

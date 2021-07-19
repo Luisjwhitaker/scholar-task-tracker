@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>this is the PROFILE page</h1> <br>
-    <h1>{{user.username}}</h1>
-    <h1>{{user.profile.nickname}}</h1>
-  </body>
-</html>
+{% extends "account/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <h1>{{user.username}}'s PROFILE </h1> <br>
+  <h1>{{user.profile.nickname}}</h1>
+  <a href="{% url 'home' %}">Back to Logs</a>
+{% endblock content %}

@@ -6,7 +6,7 @@ from slp_logs.models import TaskEntry
 from slp_logs.api.serializers import TaskEntrySerializer
 
 @api_view(['GET',])
-def api_task_entry(request,primery_key):
+def api_task_entry_specific(request,primery_key):
     try:
         taskentry = TaskEntry.objects.get(id=primery_key)
     except TaskEntry.DoesNotExist:
@@ -15,3 +15,9 @@ def api_task_entry(request,primery_key):
     if request.method == "GET":
         serializer = TaskEntrySerializer(taskentry)
         return Response(serializer.data)
+
+@api_view(['GET',])
+def api_task_entry(request):
+    taskentry = TaskEntry.objects.all()
+    serializer = TaskEntrySerializer(taskentry)
+    return Response(serializer.data)
