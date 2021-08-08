@@ -3,6 +3,7 @@ from slp_logs.models import *
 
 from django.contrib.auth.models import User
 
+
 class TaskEntrySerializer(serializers.ModelSerializer):
     def getUsername(self, obj):
         return obj.user.username
@@ -18,26 +19,44 @@ class TaskEntrySerializer(serializers.ModelSerializer):
 #        quest_slp = validated_data['quest_slp'],
 
 class RegisterSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField(style=('input_type':'password'), write_only=True)
+    password2 = serializers.CharField(style={'input_type':'password'},write_only=True)
 
     class Meta:
         model = User
-        fields = ['email','username','password','password2']
+        fields = ['username', 'password', 'password2',]
         extra_kwargs = {
-            'password': {'write_only' : True}
+            'password':{'write_only':True},
+            'std_code': {'required': False},
+            'uni_code': {'required': False},
+            'last_name': {'required': False},
+            'first_name': {'required': False}
         }
 
     def save(self):
-        account = User(
-            email=self.validated_data['email']
-            username=self.validated_data['username']
+        user = User(
+            username=self.validated_data['username'],
         )
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
 
         if password != password2:
             raise serializers.ValidationError({'password':'Passwords must match.'})
-            account.set_password(password)
-            accound.save()
 
-        return User
+        user.set_password(password)
+        user.save()
+        return user
+
+#    def save(self):
+#        account = User(
+#            email=self.validated_data['email']
+#            username=self.validated_data['username']
+#        )
+#        password = self.validated_data['password']
+#        password2 = self.validated_data['password2']
+#
+#        if password != password2:
+#            raise serializers.ValidationError({'password':'Passwords must match.'})
+#            account.set_password(password)
+#            accound.save()
+#
+#        return User
