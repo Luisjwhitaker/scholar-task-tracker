@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.authtoken.models import Token
 
 from slp_logs.models import TaskEntry
 from slp_logs.api.serializers import TaskEntrySerializer,RegisterSerializer
@@ -13,6 +14,8 @@ def api_register(request):
         user= serializer.save()
         data['responce']= 'successfully registered new user'
         data['username']= user.username
+        token = Token.objects.get(user=user).key
+        data['token']= token
     else:
         Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     return Response(data)
@@ -20,6 +23,8 @@ def api_register(request):
 @api_view(['GET',])
 def api_overview(request):
     api_urls = {
+        'Register':'/register/',
+        'Log In':'/login/',
         'List':'/task-list/',
         'Detail View':'/task-detail/<str:pk>/',
         'Create':'/task-create/',
