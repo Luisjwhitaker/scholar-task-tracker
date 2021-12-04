@@ -7,6 +7,7 @@ datapipelines==1.0.7
 decorator==4.4.2
 Django==3.2
 django-crispy-forms==1.12.0
+django-dotenv
 django-summernote==0.8.11.6
 django-taggit==1.4.0
 djangorestframework==3.12.4
